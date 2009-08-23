@@ -19,5 +19,10 @@ class RawElement extends XHtmlElement {
     public function output() {
         return $this->text;
     }
+
+    public function pretty($indlevel = 0) {
+        $str = str_repeat(' ', $indlevel*XHtmlDocument::PRETTY_TAB_WIDTH);
+        return $str . $this->output() . "\n";
+    }
 }
 ?>

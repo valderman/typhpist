@@ -5,19 +5,30 @@
 class RadioElement extends XHtmlFormElement {
     protected $options;
     protected $basename;
+    protected $label_first;
 
     /**
      * Construct a new radio button element.
-     * @param string $basename Base name of this meta element; see
-     *                         XHtmlFormElement for more information.
-     * @param array $options   Associative array of options to use for this
-     *                         set of radio buttons in the form [id => value].
-     *                         In the resulting XHTML, the ID of every
-     *                         individual radio button will be $basename_$id.
-     *                         To make a radio button initially selected,
-     *                         prepend its ID with an asterisk (*).
+     * @param string $basename     Base name of this meta element; see
+     *                             XHtmlFormElement for more information.
+     *
+     * @param array $options       Associative array of options to use for
+     *                             this set of radio buttons in the form
+     *                             [id => value].
+     *                             In the resulting XHTML, the ID of every
+     *                             individual radio button will be
+     *                             $basename_$id.
+     *                             To make a radio button initially selected,
+     *                             prepend its ID with an asterisk (*).
+     *
+     * @param boolean $label_first If this parameter is given as true, the
+     *                             label for every radio button will appear
+     *                             before the radio button itself in the
+     *                             resulting XHTML. Otherwise, the radio
+     *                             button will appear before the label.
      */
-    public function __construct($basename, $options) {
+    public function __construct($basename, $options, $label_first = false) {
+        $this->label_first = $label_first;
         $this->options = $options;
         $this->basename = $basename;
         $this->addAttributes(array('name' => $basename,
@@ -36,8 +47,40 @@ class RadioElement extends XHtmlFormElement {
             $myid = $this->basename . '_' . $k;
             $this->setAttribute('id', $myid);
 
-            $str .= '<input' . $this->outputAttributes() . $checked . '/>';
-            $str .= '<label for="' . $myid . '">' . $v . '</label>';
+            if($this->label_first) {
+                $str .= '<label for="' . $myid . '">' . $v . '</label>';
+                $str .= '<input' . $this->outputAttributes() . $checked .'/>';
+            } else {
+                $str .= '<input' . $this->outputAttributes() . $checked .'/>';
+                $str .= '<label for="' . $myid . '">' . $v . '</label>';
+            }
+        }
+        return $str;
+    }
+
+    public function pretty($indlevel) {
+        $str = '';
+        $spaces = str_repeat(' ', $indlevel*XHtmlDocument::PRETTY_TAB_WIDTH);
+        foreach($this->options as $k => $v) {
+            $str .= $spaces;
+            $checked = '';
+            if($k[0] == '*') {
+                $checked = ' checked="checked" ';
+                $k = substr($k, 1);
+            }
+
+            $myid = $this->basename . '_' . $k;
+            $this->setAttribute('id', $myid);
+
+            if($this->label_first) {
+                $str .= '<label for="' . $myid . '">' . $v . "</label>\n";
+                $str .= $spaces;
+                $str .= '<input'. $this->outputAttributes() . $checked."/>\n";
+            } else {
+                $str .= '<input'. $this->outputAttributes() . $checked."/>\n";
+                $str .= $spaces;
+                $str .= '<label for="' . $myid . '">' . $v . "</label>\n";
+            }
         }
         return $str;
     }

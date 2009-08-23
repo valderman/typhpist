@@ -67,6 +67,29 @@ class SelectElement extends XHtmlFormElement {
         return $str;
     }
 
+    /**
+     * Generate an indented list of <option> tags.
+     * @param array $opts   Array of [id => value] options.
+     * @param int $indlevel Indentation level for option tags.
+     * @return string       XHTML for the resulting set of <option> tags.
+     */
+    private function prettyOpts($opts, $indlevel = 1) {
+        $str = '';
+        $space = str_repeat(' ', $indlevel*XHtmlDocument::PRETTY_TAB_WIDTH);
+        foreach($opts as $k => $v) {
+            $sel = '';
+            if($k[0] == '*') {
+                $sel = ' selected="selected" ';
+                $k = substr($k, 1);
+            }
+
+            $str .= $space;
+            $str .= '<option value="'.$k.'" '.$sel.'>';
+            $str .= $v . "</option>\n";
+        }
+        return $str;
+    }
+
     public function output() {
         $str = '<select' . $this->outputAttributes() . '>';
         if(is_array(reset($this->options))) {
@@ -79,6 +102,28 @@ class SelectElement extends XHtmlFormElement {
             $str .= $this->genOpts($this->options);
         }
         $str .= '</select>';
+        return $str;
+    }
+
+    public function pretty($indlevel = 0) {
+        // spaces for <option>s
+        $ospace=str_repeat(' ',($indlevel+1)*XHtmlDocument::PRETTY_TAB_WIDTH);
+
+        $str = str_repeat(' ', $indlevel*XHtmlDocument::PRETTY_TAB_WIDTH);
+        $str .= '<select' . $this->outputAttributes() . ">\n";
+        if(is_array(reset($this->options))) {
+            foreach($this->options as $k => $v) {
+                $str .= $ospace;
+                $str .= '<optgroup label="' . $k . "\">\n";
+                $str .= $this->prettyOpts($v, $indlevel + 2);
+                $str .= $ospace;
+                $str .= "</optgroup>\n";
+            }
+        } else {
+            $str .= $this->prettyOpts($this->options, $indlevel + 1);
+        }
+        $str .= str_repeat(' ', $indlevel*XHtmlDocument::PRETTY_TAB_WIDTH);
+        $str .= "</select>\n";
         return $str;
     }
 }

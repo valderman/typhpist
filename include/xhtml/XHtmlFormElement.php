@@ -4,7 +4,7 @@
  * Form elements are sort of meta elements, in that one form element may in
  * fact output XHTML for two or more actual XHTML elements.
  */
-abstract class XHtmlFormElement extends XHtmlContainerElement {
+abstract class XHtmlFormElement extends XHtmlElement {
     /**
      * Construct a new form element.
      * @param string $basename Base name and ID of the form element. When this

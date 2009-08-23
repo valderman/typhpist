@@ -3,6 +3,9 @@
  * Class for creating and manipulating XHTML pages.
  */
 class XHtmlDocument {
+    ////////////////////////////
+    // Library constants
+
     /**
      * Use this charset if none is explicitly specified.
      */
@@ -18,6 +21,27 @@ class XHtmlDocument {
      * Use this doctype for all generated documents.
      */
     const DEFAULT_DOCTYPE = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">';
+
+    /**
+     * Width of each indentation level when pretty printing.
+     */
+    const PRETTY_TAB_WIDTH = 4;
+
+    /**
+     * Default # of rows for <textarea> elements.
+     */
+    const TEXTAREA_DEFAULT_ROWS = 2;
+
+    /**
+     * Default # of cols for <textarea> elements.
+     */
+    const TEXTAREA_DEFAULT_COLS = 20;
+
+
+
+
+    ////////////////////////////
+    // Private members
 
     /**
      * Charset to use for page generation.
@@ -48,6 +72,12 @@ class XHtmlDocument {
      * Child elements to this document's body tag.
      */
     private $children = array();
+
+
+
+
+    ////////////////////////////
+    // Static member functions
 
     /**
      * Set a new charset for all documents.
@@ -99,9 +129,15 @@ class XHtmlDocument {
         return html_entity_decode($str, ENT_QUOTES, self::$charset);
     }
 
+
+
+
+    ////////////////////////////
+    // Methods
+
     /**
      * Output HTML to the client's browser.
-     * @return string HTML output for the entire page.
+     * @return string XHTML output for the entire page.
      */
     public function output() {
         // Output doctype and content type
@@ -128,6 +164,45 @@ class XHtmlDocument {
             $out .= $c->output();
         }
         $out .= '</body></html>';
+        return $out;
+    }
+
+    /**
+     * Output indented, easily readable XHTML to the client's browser.
+     * Note that pretty printing (X)HTML may in some cases affect the
+     * appearance of the document slightly.
+     * @return string Pretty, indented XHTML representation of the document.
+     */
+    public function pretty() {
+        // Doctype and content type
+        $out = self::DEFAULT_DOCTYPE . "\n";
+        $out .= '<html xmlns="http://www.w3.org/1999/xhtml">' . "\n";
+        $out .= '    <head>' . "\n";
+        $out .= '        <meta http-equiv="Content-Type" content="'
+             .  self::$mimeType . ';charset='
+             .  self::$charset . '" />' . "\n";
+
+        // Include requested stylesheets
+        foreach($this->stylesheets as $s) {
+            $out .= '        ';
+            $out .= '<link rel="stylesheet" type="text/css" href="'.$s.'"/>';
+            $out .= "\n";
+        }
+
+        // Include requested scripts
+        foreach($this->scripts as $s) {
+            $out .= '        ';
+            $out .= '<script type="text/javascript" src="'.$s.'"></script>';
+            $out .= "\n";
+        }
+        $out .= '        ';
+        $out .= '<title>' . self::escape($this->title) . '</title>' . "\n";
+
+        $out .= "    </head>\n    <body>\n";
+        foreach($this->children as $c) {
+            $out .= $c->pretty(2);
+        }
+        $out .= "    </body>\n</html>";
         return $out;
     }
 

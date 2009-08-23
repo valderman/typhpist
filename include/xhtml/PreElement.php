@@ -18,5 +18,10 @@ class PreElement extends XHtmlContainerElement implements ITopLevelElement {
             $this->appendChild(new TextElement($text));
         }
     }
+
+    public function pretty($indlevel = 0) {
+        $space = str_repeat(' ', $indlevel * XHtmlDocument::PRETTY_TAB_WIDTH);
+        return $space . $this->output() . "\n";
+    }
 }
 ?>

@@ -80,5 +80,17 @@ abstract class XHtmlElement {
         $out .= '/>';
         return $out;
     }
+
+    /**
+     * Output the XHTML that makes up this element in a nicely indented,
+     * readable way. Please note that this may slightly affect the appearance
+     * of the XHTML document in some circumstances, and is thus only
+     * recommended for debugging.
+     * @param int $indlevel Indentation level of this element.
+     */
+    public function pretty($indlevel = 0) {
+        $out = str_repeat(' ', $indlevel * XHtmlDocument::PRETTY_TAB_WIDTH);
+        return $out . $this->output() . "\n";
+    }
 }
 ?>
