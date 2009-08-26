@@ -41,10 +41,19 @@ class SelectElement extends XHtmlFormElement {
      *                                 <option value="car">Car</option>
      *                             </optgroup>
      *                         </select>
+     *
+     * @param int $size        Number of items to show in the list at once.
+     *
+     * @param boolean $multi   If $multi is given as true, multiple items may
+     *                         be selected at once in this list.
      */
-    public function __construct($basename, $options) {
+    public function __construct($basename, $options, $size=1, $multi=false) {
         $this->options = $options;
-        $this->addAttributes(array('name' => $basename, 'id' => $basename));
+        if($multi)
+            $this->setAttribute('multiple', 'multiple');
+        $this->addAttributes(array('name' => $basename,
+                                   'id'   => $basename,
+                                   'size' => $size));
     }
 
     /**
