@@ -2,7 +2,8 @@
 /**
  * Represents raw, unescaped text which can be inserted just about anywhere.
  */
-class RawElement extends XHtmlElement {
+class RawElement extends XHtmlElement
+                 implements IAnyElement {
     /**
      * The text that makes up this element.
      */

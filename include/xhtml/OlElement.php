@@ -2,7 +2,8 @@
 /**
  * Represents an XHTML ol tag.
  */
-class OlElement extends XHtmlContainerElement {
+class OlElement extends XHtmlContainerElement
+                implements IListElement {
     /**
      * Construct a new ol element, with the specified set of children, if
      * actually specified, or empty if not.

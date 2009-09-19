@@ -22,5 +22,9 @@ class LiElement extends XHtmlContainerElement {
             }
         }
     }
+
+    public function appendChild(IFlowElement $e) {
+        parent::appendChild($e);
+    }
 }
 ?>

@@ -2,7 +2,7 @@
 /**
  * Represents an XHTML tfoot element.
  */
-class TFootElement extends XHtmlTableElement implements ITopLevelElement {
+class TFootElement extends XHtmlTableElement {
     /**
      * Construct a new tfoot element, with the specified set of children, if
      * actually specified, or empty if not.

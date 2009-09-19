@@ -2,7 +2,8 @@
 /**
  * Represents an XHTML br tag.
  */
-class BrElement extends XHtmlElement {
+class BrElement extends XHtmlElement
+                implements ISpecialPreElement {
     /**
      * Construct a new br element.
      */

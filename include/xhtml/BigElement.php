@@ -2,7 +2,8 @@
 /**
  * Represents an XHTML big tag.
  */
-class BigElement extends XHtmlContainerElement {
+class BigElement extends XHtmlContainerElement
+                 implements IFontStyleElement {
     /**
      * Construct a new big element, with the specified set of children, if
      * actually specified, or empty if not.
@@ -13,6 +14,10 @@ class BigElement extends XHtmlContainerElement {
         foreach($children as $c) {
             $this->appendChild($c);
         }
+    }
+
+    public function appendChild(ITextLevelElement $e) {
+        parent::appendChild($e);
     }
 }
 ?>

@@ -2,7 +2,7 @@
 /**
  * Represents an XHTML tr element.
  */
-class TrElement extends XHtmlTableElement implements ITopLevelElement {
+class TrElement extends XHtmlTableElement {
     /**
      * Construct a new tr element, with the specified set of children, if
      * actually specified, or empty if not.

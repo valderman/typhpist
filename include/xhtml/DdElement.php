@@ -22,5 +22,8 @@ class DdElement extends XHtmlDefinitionListElement {
             }
         }
     }
-}
+
+    public function appendChild(IFlowElement $e) {
+        parent::appendChild($e);
+    }}
 ?>

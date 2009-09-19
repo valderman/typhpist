@@ -2,7 +2,8 @@
 /**
  * Represents an XHTML pre element.
  */
-class PreElement extends XHtmlContainerElement implements ITopLevelElement {
+class PreElement extends XHtmlContainerElement
+                 implements IBlockTextElement {
     /**
      * Construct a new pre element.
      * @param mixed  $text  If $text is an XHtmlElement, the element is used
@@ -22,6 +23,10 @@ class PreElement extends XHtmlContainerElement implements ITopLevelElement {
     public function pretty($indlevel = 0) {
         $space = str_repeat(' ', $indlevel * XHtmlDocument::PRETTY_TAB_WIDTH);
         return $space . $this->output() . "\n";
+    }
+
+    public function appendChild(IPreContent $e) {
+        parent::appendChild($e);
     }
 }
 ?>

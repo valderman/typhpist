@@ -2,7 +2,8 @@
 /**
  * Represents an <input type="submit">
  */
-class SubmitElement extends XHtmlFormElement {
+class SubmitElement extends XHtmlFormElement
+                    implements IInlineFormElement {
     /**
      * Construct a new submit button.
      * @param string $value Text for the submit button.

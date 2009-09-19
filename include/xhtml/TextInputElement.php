@@ -2,7 +2,8 @@
 /**
  * Represents an <input type="text">.
  */
-class TextInputElement extends XHtmlFormElement {
+class TextInputElement extends XHtmlFormElement
+                       implements IInlineFormElement {
     protected $label;
 
     public function __construct($basename, $label = null, $value = null) {

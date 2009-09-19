@@ -3,7 +3,7 @@
  * Represents an XHTML fieldset tag.
  */
 class FieldsetElement extends XHtmlContainerElement
-                      implements ITopLevelElement {
+                      implements IBlockElement {
     /**
      * Construct a new fieldset element, with the specified set of children if
      * actually specified, or empty if not.
@@ -24,5 +24,8 @@ class FieldsetElement extends XHtmlContainerElement
         }
     }
 
+    public function appendChild(IFieldsetContent $e) {
+        parent::appendChild($e);
+    }
 }
 ?>

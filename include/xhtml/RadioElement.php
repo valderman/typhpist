@@ -2,7 +2,8 @@
 /**
  * Represents a set of <input type="radio">
  */
-class RadioElement extends XHtmlFormElement {
+class RadioElement extends XHtmlFormElement
+                   implements IInlineFormElement {
     protected $options;
     protected $basename;
     protected $label_first;

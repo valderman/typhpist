@@ -2,7 +2,8 @@
 /**
  * Represents a <textarea> element.
  */
-class TextareaElement extends XHtmlFormElement {
+class TextareaElement extends XHtmlFormElement
+                      implements IInlineFormElement {
     protected $label;
     protected $text;
 

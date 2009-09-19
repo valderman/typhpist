@@ -3,7 +3,7 @@
  * Represents an XHTML block quote.
  */
 class BlockquoteElement extends XHtmlContainerElement
-                        implements ITopLevelElement {
+                        implements IBlockTextElement {
     /**
      * Construct a new block quote.
      * @param mixed  $text  If $text is an XHtmlElement, the element is used
@@ -18,6 +18,10 @@ class BlockquoteElement extends XHtmlContainerElement
         } else {
             $this->appendChild(new TextElement($text));
         }
+    }
+
+    public function appendChild(IBlockLevelElement $e) {
+        parent::appendChild($e);
     }
 }
 ?>

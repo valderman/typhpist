@@ -2,7 +2,8 @@
 /**
  * Represents a <select> element with <option>s included
  */
-class SelectElement extends XHtmlFormElement {
+class SelectElement extends XHtmlFormElement
+                    implements IInlineFormElement {
     protected $options;
     protected $basename;
 

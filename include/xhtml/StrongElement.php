@@ -2,7 +2,8 @@
 /**
  * Represents an XHTML strong element.
  */
-class StrongElement extends XHtmlContainerElement {
+class StrongElement extends XHtmlContainerElement
+                    implements IPhraseElement {
     /**
      * Construct a new strong element.
      * @param mixed  $text  If $text is an XHtmlElement, the element is used
@@ -17,6 +18,10 @@ class StrongElement extends XHtmlContainerElement {
         } else {
             $this->appendChild(new TextElement($text));
         }
+    }
+
+    public function appendChild(ITextLevelElement $e) {
+        parent::appendChild($e);
     }
 }
 ?>

@@ -2,7 +2,7 @@
 /**
  * Represents an XHTML td element.
  */
-class TdElement extends XHtmlTableCellElement implements ITopLevelElement {
+class TdElement extends XHtmlTableCellElement {
     /**
      * Construct a new td element, with the specified set of children, if
      * actually specified, or empty if not.
@@ -13,6 +13,10 @@ class TdElement extends XHtmlTableCellElement implements ITopLevelElement {
         foreach($children as $c) {
             $this->appendChild($c);
         }
+    }
+
+    public function appendChild(IFlowElement $e) {
+        parent::appendChild($e);
     }
 }
 ?>

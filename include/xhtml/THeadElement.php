@@ -2,7 +2,7 @@
 /**
  * Represents an XHTML thead element.
  */
-class THeadElement extends XHtmlTableElement implements ITopLevelElement {
+class THeadElement extends XHtmlTableElement {
     /**
      * Construct a new thead element, with the specified set of children, if
      * actually specified, or empty if not.

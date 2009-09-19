@@ -2,7 +2,8 @@
 /**
  * Represents a set of <input type="checkbox">
  */
-class CheckboxElement extends XHtmlFormElement {
+class CheckboxElement extends XHtmlFormElement
+                      implements IInlineFormElement {
     protected $options;
     protected $basename;
     protected $label_first;

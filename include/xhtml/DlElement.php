@@ -2,7 +2,8 @@
 /**
  * Represents an XHTML dl tag.
  */
-class DlElement extends XHtmlContainerElement implements ITopLevelElement {
+class DlElement extends XHtmlContainerElement
+                implements IListElement {
     /**
      * Construct a new dl element, with the specified set of children, if
      * actually specified, or empty if not.

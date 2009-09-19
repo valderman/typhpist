@@ -2,7 +2,8 @@
 /**
  * Represents an XHTML hr tag.
  */
-class HrElement extends XHtmlElement implements ITopLevelElement {
+class HrElement extends XHtmlElement
+                implements IBlockTextElement {
     /**
      * Construct a new hr element.
      */

@@ -20,7 +20,7 @@ class XHtmlDocument {
     /**
      * Use this doctype for all generated documents.
      */
-    const DEFAULT_DOCTYPE = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">';
+    const DEFAULT_DOCTYPE = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">';
 
     /**
      * Width of each indentation level when pretty printing.
@@ -246,7 +246,7 @@ class XHtmlDocument {
      * to the document.
      * @param object $child The child element to add.
      */
-    public function appendChild(ITopLevelElement $child) {
+    public function appendChild(IBlockLevelElement $child) {
         $this->children[] = $child;
     }
 }

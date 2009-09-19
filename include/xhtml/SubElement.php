@@ -2,7 +2,8 @@
 /**
  * Represents an XHTML sub tag.
  */
-class SubElement extends XHtmlContainerElement {
+class SubElement extends XHtmlContainerElement
+                 implements IPhraseElement {
     /**
      * Construct a new sub element, with the specified set of children, if
      * actually specified, or empty if not.
@@ -13,6 +14,10 @@ class SubElement extends XHtmlContainerElement {
         foreach($children as $c) {
             $this->appendChild($c);
         }
+    }
+
+    public function appendChild(ITextLevelElement $e) {
+        parent::appendChild($e);
     }
 }
 ?>

@@ -3,7 +3,8 @@
  * Custom XHTML element.
  * Use when there is no equivalent class for the element you want to use.
  */
-class CustomElement extends XHtmlElement {
+class CustomElement extends XHtmlElement
+                    implements IAnyElement {
     /**
      * Name of this custom tag.
      */

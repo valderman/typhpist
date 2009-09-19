@@ -2,7 +2,8 @@
 /**
  * Represents an <input type="reset">
  */
-class ResetElement extends XHtmlFormElement {
+class ResetElement extends XHtmlFormElement
+                   implements IInlineFormElement {
     /**
      * Construct a new reset button.
      * @param string $value Text for the reset button.

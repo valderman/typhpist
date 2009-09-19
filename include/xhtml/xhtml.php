@@ -1,4 +1,6 @@
 <?php
+require_once 'ElementTypes.php';
+
 /**
  * Set up autoloading of all XHTML classes.
  * @param string $class The class to load.

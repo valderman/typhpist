@@ -2,7 +2,8 @@
 /**
  * Represents an <input type="button">
  */
-class FileElement extends XHtmlFormElement {
+class FileElement extends XHtmlFormElement
+                  implements IInlineFormElement {
     /**
      * Construct a new file upload element.
      * @param string $id      ID and name of this file upload.

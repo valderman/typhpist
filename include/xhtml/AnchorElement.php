@@ -11,5 +11,9 @@ class AnchorElement extends XHtmlElement {
         $this->tagName = 'a';
         $this->setAttribute('name', $name);
     }
+
+    public function appendChild(ITextLevelElement $e) {
+        parent::appendChild($e);
+    }
 }
 ?>

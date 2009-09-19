@@ -2,7 +2,8 @@
 /**
  * Represents an XHTML ul tag.
  */
-class UlElement extends XHtmlContainerElement implements ITopLevelElement {
+class UlElement extends XHtmlContainerElement
+                implements IListElement {
     /**
      * Construct a new ul element, with the specified set of children, if
      * actually specified, or empty if not.

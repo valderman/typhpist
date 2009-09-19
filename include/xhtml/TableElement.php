@@ -2,7 +2,8 @@
 /**
  * Represents an XHTML table element.
  */
-class TableElement extends XHtmlContainerElement implements ITopLevelElement {
+class TableElement extends XHtmlContainerElement
+                   implements IBlockElement {
     /**
      * Construct a new table element with the specified caption, if given.
      * Which it really ought to be, as unlabeled tables are confusing and bad.

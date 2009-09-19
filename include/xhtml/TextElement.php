@@ -2,7 +2,8 @@
 /**
  * Represents a string of text somewhere in a document.
  */
-class TextElement extends XHtmlElement {
+class TextElement extends XHtmlElement
+                  implements ICDataElement {
     /**
      * The text that makes up this element.
      */

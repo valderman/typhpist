@@ -2,7 +2,8 @@
 /**
  * Represents an <input type="button">
  */
-class ButtonElement extends XHtmlFormElement {
+class ButtonElement extends XHtmlFormElement
+                    implements IInlineFormElement {
     /**
      * Construct a new reset button.
      * @param string $id      ID and name of this button.

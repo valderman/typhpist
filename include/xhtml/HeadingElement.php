@@ -2,7 +2,8 @@
 /**
  * Represents an XHTML h1-h6 element.
  */
-class HeadingElement extends XHtmlContainerElement {
+class HeadingElement extends XHtmlContainerElement
+                     implements IBlockElement {
     /**
      * Construct a new hyperlink.
      * @param int $level    Level of heading (1-6).
@@ -18,6 +19,10 @@ class HeadingElement extends XHtmlContainerElement {
         } else {
             $this->appendChild(new TextElement($text));
         }
+    }
+
+    public function appendChild(ITextLevelElement $e) {
+        parent::apendChild(e);
     }
 }
 ?>

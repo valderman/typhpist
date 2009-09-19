@@ -2,7 +2,7 @@
 /**
  * Represents an XHTML tbody element.
  */
-class TBodyElement extends XHtmlTableElement implements ITopLevelElement {
+class TBodyElement extends XHtmlTableElement {
     /**
      * Construct a new tbody element, with the specified set of children, if
      * actually specified, or empty if not.

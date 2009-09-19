@@ -2,7 +2,8 @@
 /**
  * Represents an XHTML small tag.
  */
-class SmallElement extends XHtmlContainerElement {
+class SmallElement extends XHtmlContainerElement
+                   implements IFontStyleElement {
     /**
      * Construct a new small element, with the specified set of children, if
      * actually specified, or empty if not.
@@ -13,6 +14,10 @@ class SmallElement extends XHtmlContainerElement {
         foreach($children as $c) {
             $this->appendChild($c);
         }
+    }
+
+    public function appendChild(ITextLevelElement $e) {
+        parent::appendChild($e);
     }
 }
 ?>

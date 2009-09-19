@@ -2,7 +2,9 @@
 /**
  * Represents an XHTML hyperlink.
  */
-class LinkElement extends XHtmlContainerElement {
+class LinkElement extends XHtmlContainerElement
+                  implements IInlineElement,
+                             IPreContent {
     /**
      * Construct a new hyperlink.
      * @param string $url   The URL pointed to by this link.
@@ -22,6 +24,10 @@ class LinkElement extends XHtmlContainerElement {
             $this->appendChild(new TextElement($text));
         }
         $this->addAttributes(array('href' => $url, 'title' => $title));
+    }
+
+    public function appendChild(IInlineElementNoLink $e) {
+        parent::appendChild($e);
     }
 }
 ?>

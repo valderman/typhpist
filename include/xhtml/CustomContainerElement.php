@@ -4,7 +4,8 @@
  * Use when there is no corresponding class for the XHTML container element
  * you want to use.
  */
-class CustomContainerElement extends XHtmlContainerElement {
+class CustomContainerElement extends XHtmlContainerElement
+                             implements IAnyElement {
     /**
      * Construct a new custom XHTML element.
      * @param string $name Name of this custom element.

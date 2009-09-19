@@ -2,7 +2,8 @@
 /**
  * Represents an XHTML img tag.
  */
-class ImgElement extends XHtmlElement {
+class ImgElement extends XHtmlElement
+                 implements ISpecialElement {
     /**
      * Construct a new image element.
      * @param string $src Source URL of image.

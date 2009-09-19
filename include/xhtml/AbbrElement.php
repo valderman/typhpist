@@ -2,7 +2,8 @@
 /**
  * Represents an XHTML abbr tag.
  */
-class AbbrElement extends XHtmlContainerElement {
+class AbbrElement extends XHtmlContainerElement
+                  implements IPhraseElement {
     /**
      * Construct a new abbr element, with the specified set of children, if
      * actually specified, or empty if not.
@@ -16,6 +17,10 @@ class AbbrElement extends XHtmlContainerElement {
         $this->setAttribute('title', $phrase);
         if($word)
             $this->appendChild(new TextElement($abbr));
+    }
+
+    public function appendChild(ITextLevelElement $e) {
+        parent::appendChild($e);
     }
 }
 ?>

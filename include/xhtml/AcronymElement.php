@@ -2,7 +2,8 @@
 /**
  * Represents an XHTML acronym tag.
  */
-class AcronymElement extends XHtmlContainerElement {
+class AcronymElement extends XHtmlContainerElement
+                     implements IPhraseElement {
     /**
      * Construct a new abbr element, with the specified set of children, if
      * actually specified, or empty if not.
@@ -17,6 +18,10 @@ class AcronymElement extends XHtmlContainerElement {
         $this->setAttribute('title', $phrase);
         if($word)
             $this->appendChild(new TextElement($acro));
+    }
+
+    public function appendChild(ITextLevelElement $e) {
+        parent::appendChild($e);
     }
 }
 ?>

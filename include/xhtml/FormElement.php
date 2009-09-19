@@ -2,7 +2,10 @@
 /**
  * Represents an XHTML form tag.
  */
-class FormElement extends XHtmlContainerElement implements ITopLevelElement {
+class FormElement extends XHtmlContainerElement
+                  implements IBlockLevelElement,
+                             IFlowElement,
+                             IFieldsetContent {
     /**
      * Construct a new form element, with the specified method and action.
      * @param string $method   Method to use for sending data (POST or GET)
@@ -27,6 +30,10 @@ class FormElement extends XHtmlContainerElement implements ITopLevelElement {
     public function enableFiles() {
         $this->setAttribute('enctype', 'multipart/form-data');
         $this->setAttribute('method', 'post');
+    }
+
+    public function appendChild(IBlockNoForm $e) {
+        parent::appendChild($e);
     }
 }
 ?>

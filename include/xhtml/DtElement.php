@@ -22,5 +22,9 @@ class DtElement extends XHtmlDefinitionListElement {
             }
         }
     }
+
+    public function appendChild(ITextLevelElement $e) {
+        parent::appendChild($e);
+    }
 }
 ?>

@@ -2,7 +2,8 @@
 /**
  * Represents an XHTML div tag.
  */
-class SpanElement extends XHtmlContainerElement {
+class SpanElement extends XHtmlContainerElement
+                  implements ISpecialPreElement {
     /**
      * Construct a new span element, with the specified set of children, if
      * actually specified, or empty if not.
@@ -13,6 +14,10 @@ class SpanElement extends XHtmlContainerElement {
         foreach($children as $c) {
             $this->appendChild($c);
         }
+    }
+
+    public function appendChild(ITextLevelElement $e) {
+        parent::appendChild($e);
     }
 }
 ?>

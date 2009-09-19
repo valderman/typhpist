@@ -2,7 +2,8 @@
 /**
  * Represents an XHTML code element.
  */
-class CodeElement extends XHtmlContainerElement {
+class CodeElement extends XHtmlContainerElement
+                  implements IPhraseElement {
     /**
      * Construct a new code element.
      * @param mixed  $text  If $text is an XHtmlElement, the element is used
@@ -17,6 +18,10 @@ class CodeElement extends XHtmlContainerElement {
         } else {
             $this->appendChild(new TextElement($text));
         }
+    }
+
+    public function appendChild(ITextLevelElement $e) {
+        parent::appendChild($e);
     }
 }
 ?>

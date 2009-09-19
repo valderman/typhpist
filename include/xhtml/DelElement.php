@@ -2,7 +2,8 @@
 /**
  * Represents an XHTML del tag.
  */
-class DelElement extends XHtmlContainerElement implements ITopLevelElement {
+class DelElement extends XHtmlContainerElement
+                 implements IMiscElement {
     /**
      * Construct a new del element, with the specified set of children, if
      * actually specified, or empty if not.
@@ -13,6 +14,10 @@ class DelElement extends XHtmlContainerElement implements ITopLevelElement {
         foreach($children as $c) {
             $this->appendChild($c);
         }
+    }
+
+    public function appendChild(IFlowElement $e) {
+        parent::appendChild($e);
     }
 }
 ?>
